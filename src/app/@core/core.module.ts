@@ -53,21 +53,22 @@ import { SecurityCamerasService } from './mock/security-cameras.service';
 import { MockDataModule } from './mock/mock-data.module';
 
 const socialLinks = [
-  {
-    url: 'https://github.com/akveo/nebular',
-    target: '_blank',
-    icon: 'socicon-github',
-  },
-  {
-    url: 'https://www.facebook.com/akveo/',
-    target: '_blank',
-    icon: 'socicon-facebook',
-  },
-  {
-    url: 'https://twitter.com/akveo_inc',
-    target: '_blank',
-    icon: 'socicon-twitter',
-  },
+  // Dùng để đăng nhập OAUTH2
+  // {
+  //   url: 'https://github.com/akveo/nebular',
+  //   target: '_blank',
+  //   icon: 'socicon-github',
+  // },
+  // {
+  //   url: 'https://www.facebook.com/akveo/',
+  //   target: '_blank',
+  //   icon: 'socicon-facebook',
+  // },
+  // {
+  //   url: 'https://twitter.com/akveo_inc',
+  //   target: '_blank',
+  //   icon: 'socicon-twitter',
+  // },
 ];
 
 const DATA_SERVICES = [
@@ -111,12 +112,13 @@ export const NB_CORE_PROVIDERS = [
       }),
     ],
     forms: {
-      login: {
-        socialLinks: socialLinks,
-      },
-      register: {
-        socialLinks: socialLinks,
-      },
+      // Dùng để đăng nhập OAUTH2
+      // login: {
+      //   socialLinks: socialLinks,
+      // },
+      // register: {
+      //   socialLinks: socialLinks,
+      // },
     },
   }).providers,
 
