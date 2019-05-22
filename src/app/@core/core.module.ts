@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
+import { NbAuthModule, NbPasswordAuthStrategy, NbAuthSimpleToken } from '@nebular/auth';
 import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 
@@ -106,19 +106,104 @@ export const NB_CORE_PROVIDERS = [
   ...NbAuthModule.forRoot({
 
     strategies: [
-      NbDummyAuthStrategy.setup({
+      // https://akveo.github.io/nebular/docs/auth/nbpasswordauthstrategy
+      NbPasswordAuthStrategy.setup({
         name: 'email',
-        delay: 3000,
+
+        // https://akveo.github.io/nebular/docs/auth/configuring-a-strategy#setup-api-configuration
+        baseEndpoint: 'assets/api',
+        login: {
+          endpoint: '/auth/sign-in.json',
+          method: 'get',
+        },
+        register: {
+          endpoint: '/auth/sign-up.json',
+          method: 'post',
+        },
+        logout: {
+          endpoint: '/auth/sign-out.json',
+          method: 'post',
+        },
+        requestPass: {
+          endpoint: '/auth/request-pass.json',
+          method: 'post',
+        },
+        resetPass: {
+          endpoint: '/auth/reset-pass.json',
+          method: 'post',
+        },
+
+        // https://akveo.github.io/nebular/docs/auth/getting-user-token#configure-token-type
+        token: {
+          class: NbAuthSimpleToken,
+
+          key: 'data.token', // this parameter tells where to look for the token
+        },
       }),
     ],
     forms: {
-      // Dùng để đăng nhập OAUTH2
-      // login: {
-      //   socialLinks: socialLinks,
-      // },
-      // register: {
-      //   socialLinks: socialLinks,
-      // },
+      // https://akveo.github.io/nebular/docs/auth/configuring-ui#ui-settings
+      login: {
+        redirectDelay: 500, // delay before redirect after a successful login, while success message is shown to the user
+        strategy: 'email',  // strategy id key.
+        rememberMe: true,   // whether to show or not the `rememberMe` checkbox
+        showMessages: {     // show/not show success/error messages
+          success: true,
+          error: true,
+        },
+        // Dùng để đăng nhập OAUTH2
+        // socialLinks: socialLinks, // social links at the bottom of a page
+      },
+      register: {
+        redirectDelay: 500,
+        strategy: 'email',
+        showMessages: {
+          success: true,
+          error: true,
+        },
+        terms: true,
+        // Dùng để đăng nhập OAUTH2
+        // socialLinks: socialLinks,
+      },
+      requestPassword: {
+        redirectDelay: 500,
+        strategy: 'email',
+        showMessages: {
+          success: true,
+          error: true,
+        },
+        // Dùng để đăng nhập OAUTH2
+        // socialLinks: socialLinks,
+      },
+      resetPassword: {
+        redirectDelay: 500,
+        strategy: 'email',
+        showMessages: {
+          success: true,
+          error: true,
+        },
+        // Dùng để đăng nhập OAUTH2
+        // socialLinks: socialLinks,
+      },
+      logout: {
+        redirectDelay: 500,
+        strategy: 'email',
+      },
+      validation: {
+        password: {
+          required: true,
+          minLength: 4,
+          maxLength: 50,
+        },
+        email: {
+          required: true,
+        },
+        fullName: {
+          required: false,
+          minLength: 4,
+          maxLength: 50,
+        },
+      },
     },
   }).providers,
 
