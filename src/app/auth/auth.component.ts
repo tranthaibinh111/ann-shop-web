@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
       auth works!
     </p>
   `,
-  styles: []
+  styles: [],
 })
 export class AuthComponent implements OnInit {
 

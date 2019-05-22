@@ -52,25 +52,6 @@ import { VisitorsAnalyticsService } from './mock/visitors-analytics.service';
 import { SecurityCamerasService } from './mock/security-cameras.service';
 import { MockDataModule } from './mock/mock-data.module';
 
-const socialLinks = [
-  // Dùng để đăng nhập OAUTH2
-  // {
-  //   url: 'https://github.com/akveo/nebular',
-  //   target: '_blank',
-  //   icon: 'socicon-github',
-  // },
-  // {
-  //   url: 'https://www.facebook.com/akveo/',
-  //   target: '_blank',
-  //   icon: 'socicon-facebook',
-  // },
-  // {
-  //   url: 'https://twitter.com/akveo_inc',
-  //   target: '_blank',
-  //   icon: 'socicon-twitter',
-  // },
-];
-
 const DATA_SERVICES = [
   { provide: UserData, useClass: UserService },
   { provide: ElectricityData, useClass: ElectricityService },
@@ -151,8 +132,6 @@ export const NB_CORE_PROVIDERS = [
           success: true,
           error: true,
         },
-        // Dùng để đăng nhập OAUTH2
-        // socialLinks: socialLinks, // social links at the bottom of a page
       },
       register: {
         redirectDelay: 500,
@@ -162,8 +141,6 @@ export const NB_CORE_PROVIDERS = [
           error: true,
         },
         terms: true,
-        // Dùng để đăng nhập OAUTH2
-        // socialLinks: socialLinks,
       },
       requestPassword: {
         redirectDelay: 500,
@@ -172,8 +149,6 @@ export const NB_CORE_PROVIDERS = [
           success: true,
           error: true,
         },
-        // Dùng để đăng nhập OAUTH2
-        // socialLinks: socialLinks,
       },
       resetPassword: {
         redirectDelay: 500,
@@ -182,8 +157,6 @@ export const NB_CORE_PROVIDERS = [
           success: true,
           error: true,
         },
-        // Dùng để đăng nhập OAUTH2
-        // socialLinks: socialLinks,
       },
       logout: {
         redirectDelay: 500,

@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { NbAuthModule } from '@nebular/auth';
-import { 
+import {
   NbAlertModule,
   NbButtonModule,
   NbCheckboxModule,
-  NbInputModule
+  NbInputModule,
 } from '@nebular/theme';
 
 import { AuthRoutingModule } from './auth-routing.module';
@@ -24,7 +24,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     RegisterComponent,
     LogoutComponent,
     RequestPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +37,6 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     AuthRoutingModule,
 
     NbAuthModule,
-  ]
+  ],
 })
 export class AuthModule { }
